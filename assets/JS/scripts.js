@@ -16,7 +16,6 @@ function getRandomItem(list) {
 }
 
 // Created prompts for length
-
 function generatePassword() {
   var userInput = window.prompt(
     "How many characters would you like in your password?"
@@ -36,7 +35,6 @@ function generatePassword() {
 }
 
 // Created a true/false statement
-
 var passwordNumbers = window.confirm("Would you like to include number?");
 var passwordSymbols = window.confirm(
   "Would you like to include special characters?"
@@ -47,6 +45,45 @@ var passwordLowercase = window.confirm(
 var passwordUppercase = window.confirm(
   "Would you like to include uppercaseletters?"
 );
+
+//  Created array of chars
+var numberList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+var symbolList = ["!", "@", "#", "$", "%", "&", "*"];
+var lowercaseList = [
+  "a",
+  "b",
+  "c",
+  "d",
+  "e",
+  "f",
+  "g",
+  "h",
+  "i",
+  "j",
+  "k",
+  "l",
+  "m",
+  "n",
+  "o",
+  "p",
+  "q",
+  "r",
+  "s",
+  "t",
+  "u",
+  "v",
+  "w",
+  "x",
+  "y",
+  "z",
+];
+
+var uppercaseList = [];
+var passOptions = [];
+
+for (var i = 0; i < lowercaseList.length; i++) {
+  uppercaseList[i] = lowercaseList[i].toUpperCase();
+}
 
 // Write password to the #password input
 function writePassword() {
