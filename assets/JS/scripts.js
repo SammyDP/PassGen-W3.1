@@ -32,57 +32,87 @@ function generatePassword() {
     window.alert("Password must be 8-128 characters!");
     return;
   }
-}
 
-// Created a true/false statement
-var passwordNumbers = window.confirm("Would you like to include number?");
-var passwordSymbols = window.confirm(
-  "Would you like to include special characters?"
-);
-var passwordLowercase = window.confirm(
-  "Would you like to include lowercase letters?"
-);
-var passwordUppercase = window.confirm(
-  "Would you like to include uppercaseletters?"
-);
+  // Created a true/false statement
+  var passwordNumbers = window.confirm("Would you like to include number?");
+  var passwordSymbols = window.confirm(
+    "Would you like to include special characters?"
+  );
+  var passwordLowercase = window.confirm(
+    "Would you like to include lowercase letters?"
+  );
+  var passwordUppercase = window.confirm(
+    "Would you like to include uppercaseletters?"
+  );
 
-//  Created array of chars
-var numberList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-var symbolList = ["!", "@", "#", "$", "%", "&", "*"];
-var lowercaseList = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-];
+  //  Created array of chars
+  var numberList = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+  var symbolList = ["!", "@", "#", "$", "%", "&", "*"];
+  var lowercaseList = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
 
-var uppercaseList = [];
-var passOptions = [];
+  var uppercaseList = [];
+  var passOptions = [];
 
-for (var i = 0; i < lowercaseList.length; i++) {
-  uppercaseList[i] = lowercaseList[i].toUpperCase();
+  for (var i = 0; i < lowercaseList.length; i++) {
+    uppercaseList[i] = lowercaseList[i].toUpperCase();
+  }
+
+  // If statement for prompts
+  if (passwordNumbers === true) {
+    passOptions.push(numberList);
+  }
+
+  if (passwordSymbols === true) {
+    passOptions.push(symbolList);
+  }
+
+  if (passwordLowercase === true) {
+    passOptions.push(lowercaseList);
+  }
+
+  if (passwordUppercase === true) {
+    passOptions.push(uppercaseList);
+  }
+
+  if (passOptions.length === 0) {
+    passOptions.push(numberList);
+  }
+
+  var generatePassword = "";
+
+  for (var i = 0; i < passwordLength; i++) {
+    var randomList = getRandomItem(passOptions);
+    var randomchar = getRandomItem(randomList);
+    generatePassword += randomchar;
+  }
+  return generatePassword;
 }
 
 // Write password to the #password input
